@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+    use Illuminate\Support\Facades\Storage;
+    use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
     public function index(){
-        $users= User::get();//select * from users 
+        $users= User::get();//select * from users
         return response()->json($users);
     } //CRUD
     public function destroy($id){
@@ -48,5 +48,5 @@ class UserController extends Controller
         catch (\Exception $exception) {
             return response()->json("error",400);
         }
-    }    
+    }
 }
