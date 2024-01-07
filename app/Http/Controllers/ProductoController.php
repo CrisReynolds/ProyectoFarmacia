@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 class ProductoController extends Controller
 {
     public function index(){
-        $Productos= Producto::get();//select * from Productos 
+        $Productos= Producto::get();//select * from Productos
         return response()->json($Productos);
     } //CRUD
     public function destroy($id){
@@ -48,5 +48,8 @@ class ProductoController extends Controller
         catch (\Exception $exception) {
             return response()->json("error",400);
         }
-    }       
+    }
+    public function show($id){
+        return response()->json(Producto::find($id));
+    }
 }

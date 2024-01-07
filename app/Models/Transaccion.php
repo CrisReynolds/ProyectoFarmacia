@@ -14,4 +14,12 @@ class Transaccion extends Model
         'precio',
         'venta_id',
     ];
+    public function scopeDetalle($query,$id){
+        return $query
+                    ->join('productos','productos.id','transaccions.producto_id')
+                    ->join('categorias','categorias.id','productos.categoria_id')
+                    ->select('categorias.tipo','productos.descripcion','productos.imagen','transaccions.cantidad','transaccions.precio')
+                    ->where('transaccions.venta_id',$id)
+                    ->get();
+    }
 }

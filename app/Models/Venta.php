@@ -15,4 +15,10 @@ class Venta extends Model
         'pago',
         'fecha',
     ];
+    public function scopeDetalle($query){
+        return $query
+                    ->join('users','users.id','ventas.user_id')
+                    ->join('clientes','clientes.id','ventas.cliente_id')
+                    ->select('ventas.id','users.id as userId','users.username','clientes.nombre','clientes.apellido','ventas.forma_pago','ventas.pago','ventas.fecha');
+    }
 }

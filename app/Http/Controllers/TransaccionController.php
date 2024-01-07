@@ -16,7 +16,7 @@ class TransaccionController extends Controller
     public function store(StoreTransaccionRequest $request)
     {
         Transaccion::create($request->all());
-        return $this->index();      
+        return $this->index();
     }
     public function update(UpdateTransaccionRequest $request, Transaccion $Transaccion)
     {
@@ -32,5 +32,8 @@ class TransaccionController extends Controller
         if($Transaccion)
             $Transaccion->delete();
         return $this->index();
+    }
+    public function show($id){
+        return response()->json(Transaccion::find($id));
     }
 }

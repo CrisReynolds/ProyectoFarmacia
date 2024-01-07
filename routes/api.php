@@ -8,7 +8,6 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\TransaccionController;
 use App\Http\Controllers\VentaController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,20 +18,26 @@ use App\Http\Controllers\VentaController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/mostrarCategoria',[CategoriaController::class,'index']);
-Route::get('/mostrarProducto',[ProductoController::class,'index']);
+//Route::get('/mostrarCategoria',[CategoriaController::class,'index']);
+//Route::get('/mostrarProducto',[ProductoController::class,'index']);
 // Route::get('/mostrar',[UserController::class,'index']);
 // Route::delete('/usuario/eliminar/{id}',[UserController::class,'destroy']);
 // Route::post('/usuario/nuevo',[UserController::class,'store']);
 // Route::put('/usuario/actualizar/{id}',[UserController::class,'update']);
 
 
-Route::resource('/usuario',UserController::class);//CRUD
 Route::resource('/cliente',ClienteController::class);
+Route::resource('/usuario',UserController::class);//CRUD
+Route::resource('/categoria',CategoriaController::class);
+Route::resource('/producto',ProductoController::class);
 Route::resource('/venta',VentaController::class);
+Route::get('/venta/detalle/{fecha}/{userId}/{clienteId}',[VentaController::class,'detalle']);
 Route::resource('/transaccion',TransaccionController::class);
 Route::post('/usuario/imagen',[UserController::class,'imageUpload']);
 Route::get('/usuario/imagen/{nombre}',[UserController::class,'image']);
+Route::get('/categoria/productos/{id}',[CategoriaController::class,'productos']);
+// return $request->user();
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

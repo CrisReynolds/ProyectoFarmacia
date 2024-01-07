@@ -16,7 +16,7 @@ class ClienteController extends Controller
     public function store(StoreClienteRequest $request)
     {
         Cliente::create($request->all());
-        return $this->index();      
+        return $this->index();
     }
     public function update(UpdateClienteRequest $request, Cliente $cliente)
     {
@@ -32,5 +32,8 @@ class ClienteController extends Controller
         if($cliente)
             $cliente->delete();
         return $this->index();
+    }
+    public function show($id){
+        return response()->json(Cliente::find($id));
     }
 }
