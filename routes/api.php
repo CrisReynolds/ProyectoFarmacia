@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -25,19 +26,24 @@ use App\Http\Controllers\VentaController;
 // Route::post('/usuario/nuevo',[UserController::class,'store']);
 // Route::put('/usuario/actualizar/{id}',[UserController::class,'update']);
 
+Route::post('login',[AuthController::class,'login']);
 
-Route::resource('/cliente',ClienteController::class);
-Route::resource('/usuario',UserController::class);//CRUD
-Route::resource('/categoria',CategoriaController::class);
-Route::resource('/producto',ProductoController::class);
-Route::resource('/venta',VentaController::class);
-Route::get('/venta/detalle/{fecha}/{userId}/{clienteId}',[VentaController::class,'detalle']);
-Route::resource('/transaccion',TransaccionController::class);
-Route::post('/usuario/imagen',[UserController::class,'imageUpload']);
-Route::get('/usuario/imagen/{nombre}',[UserController::class,'image']);
-Route::get('/categoria/productos/{id}',[CategoriaController::class,'productos']);
 // return $request->user();
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
     return $request->user();
+});
+
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::resource('/cliente',ClienteController::class);
+    Route::resource('/usuario',UserController::class);//CRUD
+    Route::resource('/categoria',CategoriaController::class);
+    Route::resource('/producto',ProductoController::class);
+    Route::resource('/venta',VentaController::class);
+    Route::get('/venta/detalle/{fecha}/{userId}/{clienteId}',[VentaController::class,'detalle']);
+    Route::resource('/transaccion',TransaccionController::class);
+    Route::post('/usuario/imagen',[UserController::class,'imageUpload']);
+    Route::get('/usuario/imagen/{nombre}',[UserController::class,'image']);
+    Route::get('/categoria/productos/{id}',[CategoriaController::class,'productos']);
 });
