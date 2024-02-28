@@ -35,15 +35,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'auth:api'], function() {
-    Route::resource('/cliente',ClienteController::class);
-    Route::resource('/usuario',UserController::class);//CRUD
+Route::resource('/cliente',ClienteController::class);
+Route::resource('/usuario',UserController::class);//CRUD
+Route::post('/usuario/imagen',[UserController::class,'imageUpload']);
+// Route::group(['middleware' => 'auth:api'], function() {
     Route::resource('/categoria',CategoriaController::class);
     Route::resource('/producto',ProductoController::class);
     Route::resource('/venta',VentaController::class);
     Route::get('/venta/detalle/{fecha}/{userId}/{clienteId}',[VentaController::class,'detalle']);
     Route::resource('/transaccion',TransaccionController::class);
-    Route::post('/usuario/imagen',[UserController::class,'imageUpload']);
-    Route::get('/usuario/imagen/{nombre}',[UserController::class,'image']);
     Route::get('/categoria/productos/{id}',[CategoriaController::class,'productos']);
-});
+    Route::get('/producto/meses/{gestion}',[ProductoController::class,'meses']);
+// });
+Route::get('/usuario/imagen/{nombre}',[UserController::class,'image']);

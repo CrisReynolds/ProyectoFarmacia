@@ -6,6 +6,7 @@ use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class ProductoController extends Controller
 {
@@ -51,5 +52,12 @@ class ProductoController extends Controller
     }
     public function show($id){
         return response()->json(Producto::find($id));
+    }
+    public function meses($gestion){
+        $reportes=[];
+        for($i=1;$i<=12;$i++){
+            $reportes[$i]=Producto::Meses($gestion,$i)->get();
+        }
+        return response()->json($reportes);
     }
 }

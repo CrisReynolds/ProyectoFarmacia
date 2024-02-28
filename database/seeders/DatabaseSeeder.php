@@ -19,12 +19,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Cliente::factory(20)->create();
-        Venta::factory(10)->create();
-        Transaccion::factory(10)->create();
+        // User::factory(25)->create();
+        // Cliente::factory(20)->create();
+        // Categoria::factory(25)->create();
         // Producto::factory(10)->create();
-        // User::factory(15)->create();
-        // Categoria::factory(15)->create();
+        // Venta::factory(20)->create();
+        // Transaccion::factory(10)->create();
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
@@ -62,5 +62,32 @@ class DatabaseSeeder extends Seeder
         // Categoria::create([
         //     'tipo'=>'saco'
         // ]);
+        Producto::create([
+            'descripcion'=>'Cuello Cadete',
+            'imagen'=>'test.jpg',
+            'cantidad_minima'=>'5',
+            'stock'=>'15',
+            'precio_compra'=>'40',
+            'precio_venta'=>'50',
+            'categoria_id'=>'1'
+        ]);
+        Producto::create([
+            'descripcion'=>'Manga 3/4',
+            'imagen'=>'test.jpg',
+            'cantidad_minima'=>'5',
+            'stock'=>'15',
+            'precio_compra'=>'40',
+            'precio_venta'=>'50',
+            'categoria_id'=>'1'
+        ]);
+        Producto::create([
+            'descripcion'=>'Formal',
+            'imagen'=>'test.jpg',
+            'cantidad_minima'=>'10',
+            'stock'=>'50',
+            'precio_compra'=>'50',
+            'precio_venta'=>'65',
+            'categoria_id'=>'1'
+        ]);
     }
 }
