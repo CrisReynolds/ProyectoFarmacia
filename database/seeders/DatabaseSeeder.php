@@ -29,65 +29,71 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        // User::create([
-        //     'nombre'=>'Joel',
-        //     'apellido'=>'Gonzales',
-        //     'username'=>'admin',
-        //     'password'=>'admin123',
-        //     'imagen'=>'123456.jpg',
-        //     'email'=>'admin@gmail.com'
-        // ]);
-        // User::create([
-        //     'nombre'=>'User',
-        //     'apellido'=>'Test',
-        //     'username'=>'user',
-        //     'password'=>'user123',
-        //     'imagen'=>'123456.jpg',
-        //     'email'=>'user@gmail.com'
-        // ]);
-        // User::create([
-        //     'nombre'=>'Miguel',
-        //     'apellido'=>'Suarez',
-        //     'username'=>'miguel',
-        //     'password'=>'miguel123',
-        //     'imagen'=>'123456.jpg',
-        //     'email'=>'msuarez@gmail.com'
-        // ]);
-        // Categoria::create([
-        //     'tipo'=>'camisa'
-        // ]);
-        // Categoria::create([
-        //     'tipo'=>'pantalon'
-        // ]);
-        // Categoria::create([
-        //     'tipo'=>'saco'
-        // ]);
+        User::create([
+            'nombre'=>'Cristian',
+            'apellido'=>'Perez',
+            'username'=>'admin',
+            'password'=>'admin123',
+            'imagen'=>'123456.jpg',
+            'email'=>'admin@gmail.com'
+        ]);
+        User::create([
+            'nombre'=>'User',
+            'apellido'=>'Test',
+            'username'=>'user',
+            'password'=>'user123',
+            'imagen'=>'123456.jpg',
+            'email'=>'user@gmail.com'
+        ]);
+        User::create([
+            'nombre'=>'Miguel',
+            'apellido'=>'Suarez',
+            'username'=>'miguel',
+            'password'=>'miguel123',
+            'imagen'=>'123456.jpg',
+            'email'=>'msuarez@gmail.com'
+        ]);
+        Categoria::create([
+            'tipo'=>'analgesico'
+        ]);
+        Categoria::create([
+            'tipo'=>'antiacido'
+        ]);
+        Categoria::create([
+            'tipo'=>'laxante'
+        ]);
+        Categoria::create([
+            'tipo'=>'antiinflamatorio'
+        ]);
+        Categoria::create([
+            'tipo'=>'antitusivos'
+        ]);
         Producto::create([
-            'descripcion'=>'Cuello Cadete',
+            'descripcion'=>'Aspirina',
+            'imagen'=>'test.jpg',
+            'cantidad_minima'=>'5',
+            'stock'=>'15',
+            'precio_compra'=>'30',
+            'precio_venta'=>'50',
+            'categoria_id'=>'1'
+        ]);
+        Producto::create([
+            'descripcion'=>'Tums',
             'imagen'=>'test.jpg',
             'cantidad_minima'=>'5',
             'stock'=>'15',
             'precio_compra'=>'40',
             'precio_venta'=>'50',
-            'categoria_id'=>'1'
+            'categoria_id'=>'2'
         ]);
         Producto::create([
-            'descripcion'=>'Manga 3/4',
-            'imagen'=>'test.jpg',
-            'cantidad_minima'=>'5',
-            'stock'=>'15',
-            'precio_compra'=>'40',
-            'precio_venta'=>'50',
-            'categoria_id'=>'1'
-        ]);
-        Producto::create([
-            'descripcion'=>'Formal',
+            'descripcion'=>'Dulcolax',
             'imagen'=>'test.jpg',
             'cantidad_minima'=>'10',
             'stock'=>'50',
             'precio_compra'=>'50',
             'precio_venta'=>'65',
-            'categoria_id'=>'1'
+            'categoria_id'=>'3'
         ]);
     }
 }
